@@ -7,7 +7,7 @@ export async function useAxios<T>(url: string, options: AxiosRequestConfig = {})
     const defaultOptions: AxiosRequestConfig = {
         url,
         method: 'GET',
-        baseURL: import.meta.env.VITE_API_URL,
+        baseURL: import.meta.env?.VITE_API_URL || 'http://localhost:4000/api',
         transformRequest: [function (headers) {
             if (cookies.isKey('token')) {
                 headers.Authorization = `Bearer ${cookies.get('token')}`
